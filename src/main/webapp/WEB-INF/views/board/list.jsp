@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -18,7 +17,7 @@
 
 		<!-- header -->
 		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
-		
+
 
 		<div id="container" class="clearfix">
 			<div id="aside">
@@ -44,7 +43,7 @@
 					<div class="clear"></div>
 				</div>
 				<!-- //content-head -->
-	
+
 				<div id="board">
 					<div id="list">
 						<form action="" method="">
@@ -53,9 +52,8 @@
 								<button type="submit" id=btn_search>검색</button>
 							</div>
 						</form>
-						
-						
-						<table >
+
+						<table>
 							<thead>
 								<tr>
 									<th>번호</th>
@@ -66,19 +64,21 @@
 									<th>관리</th>
 								</tr>
 							</thead>
+							<c:forEach items="${ requestScope.bList }" var="boardVo" varStatus="status">
 							<tbody>
 								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
+									<td>${ boardVo.bno }</td>
+									<td class="text-left"><a href="${pageContext.request.contextPath}/board/readform?bno=${ boardVo.bno }">${ boardVo.title }</a></td>
+									<td>${ boardVo.writer }</td>
+									<td>${ boardVo.hit }</td>
+									<td>${ boardVo.reg_date }</td>
+									<td><a href="${pageContext.request.contextPath}/board/delete?bno=${ boardVo.bno }">[삭제]</a></td>
 								</tr>
-								
+
 							</tbody>
+							</c:forEach>
 						</table>
-			
+
 						<div id="paging">
 							<ul>
 								<li><a href="">◀</a></li>
@@ -94,12 +94,12 @@
 								<li><a href="">10</a></li>
 								<li><a href="">▶</a></li>
 							</ul>
-							
-							
+
+
 							<div class="clear"></div>
 						</div>
-						<a id="btn_write" href="">글쓰기</a>
-					
+						<a id="btn_write" href="${pageContext.request.contextPath}/board/writeform">글쓰기</a>
+
 					</div>
 					<!-- //list -->
 				</div>
@@ -109,7 +109,7 @@
 
 		</div>
 		<!-- //container  -->
-		
+
 
 		<!-- footer -->
 		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>

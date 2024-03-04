@@ -50,7 +50,7 @@
 				<div id="user">
 					<div id="joinForm">
 
-						<form action="/mysite5/user" method="get">
+						<form action="${pageContext.request.contextPath}/user/join" method="get">
 
 							<!-- 아이디 -->
 							<div class="form-group">

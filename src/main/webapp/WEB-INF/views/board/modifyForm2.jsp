@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -43,48 +42,48 @@
 					<div class="clear"></div>
 				</div>
 				<!-- //content-head -->
-	
+
 				<div id="board">
-					<div id="read">
-						<form action="#" method="get">
+					<div id="modifyForm">
+						<form action="${pageContext.request.contextPath}/board/modify" method="get">
 							<!-- 작성자 -->
 							<div class="form-group">
-								<span class="form-text">작성자</span>
-								<span class="form-value">${ requestScope.bVo.writer }</span>
+								<span class="form-text">작성자</span> 
+								<span class="form-value">${ pMap.writer }</span>
 							</div>
-							
+
 							<!-- 조회수 -->
 							<div class="form-group">
-								<span class="form-text">조회수</span>
-								<span class="form-value">${ requestScope.bVo.hit }</span>
+								<span class="form-text">조회수</span> 
+								<span class="form-value">${ pMap.hit }</span>
 							</div>
-							
+
 							<!-- 작성일 -->
 							<div class="form-group">
-								<span class="form-text">작성일</span>
-								<span class="form-value">${ requestScope.bVo.reg_date }</span>
+								<span class="form-text">작성일</span> 
+								<span class="form-value">${ pMap.reg_date }</span>
 							</div>
-							
+
 							<!-- 제목 -->
 							<div class="form-group">
-								<span class="form-text">제 목</span>
-								<span class="form-value">${ requestScope.bVo.title }</span>
+								<label class="form-text" for="txt-title">제목</label> 
+								<input type="text" id="txt-title" name="" value="${ pMap.title }">
 							</div>
-						
+
+
+
 							<!-- 내용 -->
-							<div id="txt-content">
-								<span class="form-value" >
-									${ requestScope.bVo.content }
-								</span>
+							<div class="form-group">
+								<textarea id="txt-content">${ pMap.content }</textarea>
 							</div>
-							
-							<a id="btn_modify" href="${pageContext.request.contextPath}/board/modifyform?bno=${ requestScope.bVo.bno }">수정</a>
-							<a id="btn_modify" href="${pageContext.request.contextPath}/board/listform">목록</a>
-							
+
+							<a id="btn_cancel" href="">취소</a>
+							<button id="btn_modify" type="submit">수정</button>
+
 						</form>
 						<!-- //form -->
 					</div>
-					<!-- //read -->
+					<!-- //modifyForm -->
 				</div>
 				<!-- //board -->
 			</div>
@@ -92,6 +91,7 @@
 
 		</div>
 		<!-- //container  -->
+
 
 		<!-- footer -->
 		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>

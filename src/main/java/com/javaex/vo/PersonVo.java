@@ -7,6 +7,7 @@ public class PersonVo {
 	private String password;
 	private String content;
 	private String reg_date;
+	
 	public PersonVo() {
 		super();
 	}

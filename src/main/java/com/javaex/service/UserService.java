@@ -1,9 +1,13 @@
 package com.javaex.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.UserDao;
+import com.javaex.vo.PersonVo;
 import com.javaex.vo.UserVo;
 
 @Service
@@ -12,50 +16,57 @@ public class UserService {
 	// 필드
 	@Autowired
 	private UserDao userDao;
-	
+
 	public UserVo exeLogin(UserVo userVo) {
 		System.out.println("UserService.exeLogin");
-		
+
 		UserVo authUser = userDao.userSelectByIdPw(userVo);
-		
+
 		System.out.println(authUser);
 		return authUser;
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	// 등록
-	public int exeWrite(PersonVo personVo) {
-		System.out.println("PhonebookService.exeWrite()");
 
-		int count = userDao.personInsert(personVo);
+	}
+
+	// 회원가입
+	public int exeJoin(UserVo userVo) {
+		System.out.println("UserService.exeJoin()");
+
+		int count = userDao.userInsert(userVo);
 
 		return count;
 	}
 
-	// 등록2
-	public int exeWrite2(String name, String hp, String company) {
-		System.out.println("PhonebookService.exeWrite2()");
+	// 회원가입2
+	public int exeJoin2(String id, String pw, String name, String gender) {
+		System.out.println("UserService.exeJoin2()");
 
 		// map 사용
-		Map<String, String> personMap = new HashMap<String, String>();
-		personMap.put("name", name);
-		personMap.put("hp", hp);
-		personMap.put("company", company);
+		Map<String, String> userMap = new HashMap<String, String>();
+		userMap.put("id", id);
+		userMap.put("pw", pw);
+		userMap.put("name", name);
+		userMap.put("gender", gender);
 
-		int count = userDao.personInsert2(personMap);
+		int count = userDao.userInsert2(userMap);
 
 		return count;
 	}
-	*/
+
+	// 회원정보수정
+	public int exeModify(UserVo userVo) {
+		System.out.println("UserService.exeModify()");
+
+		int count = userDao.userModify(userVo);
+		return count;
+	}
+
+	// 삭제
+	public int exeDelete(int no) {
+		System.out.println("UserService.exeDelete()");
+
+		int count = userDao.userDelete(no);
+
+		return count;
+	}
+
 }

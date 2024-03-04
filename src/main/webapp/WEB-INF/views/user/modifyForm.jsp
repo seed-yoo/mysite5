@@ -48,14 +48,14 @@
 	
 				<div id="user">
 					<div id="modifyForm">
-						<form action="/mysite3/user" method="get">
+						<form action="${pageContext.request.contextPath}/user/modify" method="get">
 	
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label>
-								<input type="hidden" id="input-id" name="id" value="" placeholder="아이디를 입력하세요"	>
+								<input type="hidden" id="input-id" name="id" value="${authUser.id}" placeholder="아이디를 입력하세요"	>
 								
-								<span class="text-large bold"></span>
+								<span class="text-large bold">${authUser.id}</span>
 							</div>
 	
 							<!-- 비밀번호 -->
@@ -82,15 +82,13 @@
 	
 							</div>
 	
-								<input type="hidden" id="input-no" name="no" value="" placeholder="">
+								<input type="hidden" id="input-no" name="no" value="${authUser.no}" placeholder="">
 							<!-- 버튼영역 -->
 							<div class="button-area">
 								<button type="submit" id="btn-submit">회원정보수정</button>
-								<input type="hidden" name="action" value="update">
 							</div>
 							
 						</form>
-					
 					
 					</div>
 					<!-- //modifyForm -->
