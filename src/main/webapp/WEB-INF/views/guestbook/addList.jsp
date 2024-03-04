@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -7,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>List</title>
-<link href="/mysite3/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite3/assets/css/guestbook.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -17,7 +16,7 @@
 
 		<!-- header -->
 		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
-	
+
 		<div id="container" class="clearfix">
 			<div id="aside">
 				<h2>방명록</h2>
@@ -29,7 +28,7 @@
 			<!-- //aside -->
 
 			<div id="content">
-				
+
 				<div id="content-head" class="clearfix">
 					<h3>일반방명록</h3>
 					<div id="location">
@@ -43,7 +42,7 @@
 				<!-- //content-head -->
 
 				<div id="guestbook">
-					<form action="/mysite3/guestbook" method="get">
+					<form action="${pageContext.request.contextPath}/guestbook/write" method="get">
 						<table id="guestAdd">
 							<colgroup>
 								<col style="width: 70px;">
@@ -53,13 +52,13 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th><label class="form-text" for="input-uname">이름</label></td>
+									<th><label class="form-text" for="input-uname">이름</label></th>
 									<td><input id="input-uname" type="text" name="name"></td>
-									<th><label class="form-text" for="input-pass">패스워드</label></td>
-									<td><input id="input-pass"type="password" name="password"></td>
+									<th><label class="form-text" for="input-pass">패스워드</label></th>
+									<td><input id="input-pass" type="password" name="password"></td>
 								</tr>
 								<tr>
-									<td colspan="4"><textarea name="content" cols="72" rows="5"></textarea></td>
+									<td colspan="4"><textarea name="content" cols="72" rows="5" name="content"></textarea></td>
 								</tr>
 								<tr class="button-area">
 									<td colspan="4" class="text-center">
@@ -67,40 +66,38 @@
 									</td>
 								</tr>
 							</tbody>
-							
+
 						</table>
 						<!-- //guestWrite -->
-						<input type="hidden" name="action" value="insert"> <br>
-						
-					</form>	
 
-					<table class="guestRead">
-						<colgroup>
-							<col style="width: 10%;">
-							<col style="width: 40%;">
-							<col style="width: 40%;">
-							<col style="width: 10%;">
-						</colgroup>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>
-						
-							<a href="/mysite3/guestbook?action=dform&no=">삭제</a>
-							</td>
-						</tr>
-						<tr>
-							<td colspan=4 class="text-left"></td>
-						</tr>
-					</table>
+					</form>
+
+					<c:forEach items="${ requestScope.gList }" var="gbVo" varStatus="status">
+						<table class="guestRead">
+							<colgroup>
+								<col style="width: 10%;">
+								<col style="width: 40%;">
+								<col style="width: 40%;">
+								<col style="width: 10%;">
+							</colgroup>
+							<tr>
+								<td>${ gbVo.no }</td>
+								<td>${ gbVo.name }</td>
+								<td>${ gbVo.reg_date }</td>
+								<td><a href="${pageContext.request.contextPath}/guestbook/deleteform?no=${ gbVo.no }">삭제</a></td>
+							</tr>
+							<tr>
+								<td colspan=4 class="text-left">${ gbVo.content }</td>
+							</tr>
+						</table>
+					</c:forEach>
 					<!-- //guestRead -->
-					
-					
-					
+
+
+
 				</div>
 				<!-- //guestbook -->
-			
+
 			</div>
 			<!-- //content  -->
 		</div>

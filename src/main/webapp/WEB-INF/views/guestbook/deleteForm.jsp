@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite3/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite3/assets/css/guestbook.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -49,7 +49,7 @@
 				<!-- //content-head -->
 	
 				<div id="guestbook">
-					<form action="/mysite3/guestbook" method="get">
+					<form action="${pageContext.request.contextPath}/guestbook/delete" method="get">
 						<table id="guestDelete">
 							<colgroup>
 								<col style="width: 10%;">
@@ -61,11 +61,10 @@
 								<td>비밀번호</td>
 								<td><input type="password" name="password"></td>
 								<td class="text-left"><button type="submit">삭제</button></td>
-								<td><a href="/mysite3/guestbook?action=addform">[메인으로 돌아가기]</a></td>
+								<td><a href="${pageContext.request.contextPath}/guestbook/addlistform">[메인으로 돌아가기]</a></td>
 							</tr>
 						</table>
-						<input type="hidden" name="no" value="">
-						<input type="hidden" name="action" value="delete">
+						<input type="hidden" name="no" value="${ requestScope.gVo.no }">
 					</form>
 					
 				</div>

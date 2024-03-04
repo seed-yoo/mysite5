@@ -42,8 +42,6 @@ public class BoardController {
 	public String modifyForm(@RequestParam(value = "bno") int bno, Model model) {
 		System.out.println("BoardController.modifyform");
 
-		System.out.println("/board/modifyForm.jsp");
-
 		BoardVo boardVo = boardService.exeModifyForm(bno);
 
 		model.addAttribute("bVo", boardVo);
