@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.GuestbookDao;
-import com.javaex.vo.BoardVo;
 import com.javaex.vo.GuestbookVo;
 
 @Service
@@ -43,7 +42,7 @@ public class GuestbookService {
 	public Map<String, Object> exeModifyForm2(int bno) {
 		System.out.println("GuestbookService.exeModifyForm2()");
 
-		Map<String, Object> pMap = guestbookDao.boardSelectOne2(bno);
+		Map<String, Object> pMap = guestbookDao.guestbookSelectOne2(bno);
 
 		return pMap;
 

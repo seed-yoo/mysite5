@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.GuestbookService;
-import com.javaex.vo.BoardVo;
 import com.javaex.vo.GuestbookVo;
 
 @Controller

@@ -7,7 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.javaex.vo.BoardVo;
 import com.javaex.vo.GuestbookVo;
 
 @Repository
@@ -37,10 +36,10 @@ public class GuestbookDao {
 	}
 
 	// 1개 가져오기2
-	public Map<String, Object> boardSelectOne2(int bno) {
-		System.out.println("BoardDao.boardSelectOne()");
+	public Map<String, Object> guestbookSelectOne2(int no) {
+		System.out.println("GuestbookDao.guestbookSelectOne()");
 
-		Map<String, Object> pMap = sqlSession.selectOne("board.selectOne2", bno);
+		Map<String, Object> pMap = sqlSession.selectOne("guestbook.selectOne2", no);
 		// System.out.println(pMap);
 		// System.out.println(pMap.get("name"));
 
@@ -48,10 +47,10 @@ public class GuestbookDao {
 	}
 
 	// 수정
-	public int boardModify(BoardVo boardVo) {
-		System.out.println("BoardDao.boardModify()");
+	public int guestbookModify(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookDao.guestbookModify()");
 
-		int count = sqlSession.update("board.boardUpdate", boardVo);
+		int count = sqlSession.update("guestbook.guestbookUpdate", guestbookVo);
 
 		return count;
 

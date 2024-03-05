@@ -32,7 +32,7 @@
 	</select>
 	
 	<!-- 삭제 delete -->
-	<delete id="guestbookDelete" parameterType="int">
+	<delete id="guestbookDelete" parameterType="map">
 		<![CDATA[
 			delete from guestbook
 			where no = #{ no }
