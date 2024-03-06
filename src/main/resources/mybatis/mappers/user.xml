@@ -45,7 +45,7 @@
 	<update id="userUpdate" parameterType="UserVo">
 		<![CDATA[
 			update users
-			set password as pw = #{ pw },
+			set password = #{ pw },
 				name = #{ name },
 			    gender = #{ gender }
 			where id = #{ id }
